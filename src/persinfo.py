@@ -25,7 +25,7 @@ class PersInfo:
             'Graduation Date': Graduation_Date
         })
 
-    def add_Experience(self, Company, Position, Start_Date, End_Date):
+    def add_Experience(self, Company, Position, Start_Date, End_Date= ''):
         if End_Date == '':
             End_Date = 'present'
         self.Experience.append({

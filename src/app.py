@@ -1,5 +1,6 @@
 from persinfo import PersInfo
-from generateresume import ResumeBuilder
+from generateresume import SimpleResumeBuilder
+import LatextoPdf
 
 
 def main():
@@ -17,7 +18,7 @@ def main():
     person.add_Education(School='Example College', Degree='High School Diploma', Graduation_Date='June 2020')
 
     # Add experience
-    person.add_Experience(Company='Example Corp', Position='Software Engineer', Start_Date='January 2021', End_Date='Present')
+    person.add_Experience(Company='Example Corp', Position='Software Engineer', Start_Date='January 2021')
     person.add_Experience(Company='Example LLC', Position='Intern', Start_Date='June 2020', End_Date='December 2020')
 
     # Add skills
@@ -37,8 +38,9 @@ def main():
     person.add_certifications(certificate_name='Certified React Developer', issuing_organization='React Foundation', date='January 2021')
 
     # Generate the resume
-    resume_builder = ResumeBuilder(person)
+    resume_builder = SimpleResumeBuilder(person)
     resume_builder.generate_latex('john_doe_resume.tex')
+    LatextoPdf.convert_latex_to_pdf('C:/Users/ROG Zephyrus/Desktop/Programing/projects/pythonpy/ResumeBuilder/john_doe_resume.tex','C:/Users/ROG Zephyrus/Desktop/Programing/projects/pythonpy/ResumeBuilder/output')
 
 
 

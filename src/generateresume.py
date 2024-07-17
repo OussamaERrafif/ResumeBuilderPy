@@ -1,59 +1,60 @@
-class ResumeBuilder:
+class SimpleResumeBuilder:
     def __init__(self, person):
         self.person = person
 
     def generate_latex(self, filename='resume.tex'):
+
         with open(filename, 'w') as f:
             f.write(r'''\documentclass{resume} % Use the custom resume.cls style
 
-\usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry} % Document margins
-\newcommand{\tab}[1]{\hspace{.2667\textwidth}\rlap{#1}}
-\usepackage{hyperref}
-\newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
-\name{''' + f'{self.person.full_name}' + r'''} % Your name
-\address{''' + f'{self.person.address}' + r'''} % Your address
-\address{''' + f'{self.person.phone}\\ {self.person.email}' + r'''} % Your phone number and email
+                        \usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry} % Document margins
+                        \newcommand{\tab}[1]{\hspace{.2667\textwidth}\rlap{\#1}}
+                        \usepackage{hyperref}
+                        \newcommand{\itab}[1]{\hspace{0em}\rlap{\#1}}
+                        \name{''' + f'{self.person.full_name}' + r'''} % Your name
+                        \address{''' + f'{self.person.address}' + r'''} % Your address
+                        \address{''' + f'{self.person.phone}\\ {self.person.email}' + r'''} % Your phone number and email
 
-\begin{document}
+                        \begin{document}
 
-%----------------------------------------------------------------------------------------
-%	EDUCATION SECTION
-%----------------------------------------------------------------------------------------
+                        %----------------------------------------------------------------------------------------
+                        %	EDUCATION SECTION
+                        %----------------------------------------------------------------------------------------
 
-\begin{rSection}{Education}
-''' + self._format_education() + r'''
-\end{rSection}
+                        \begin{rSection}{Education}
+                        ''' + self._format_education() + r'''
+                        \end{rSection}
 
-%----------------------------------------------------------------------------------------
-%	EXPERIENCE SECTION
-%----------------------------------------------------------------------------------------
-\begin{rSection}{Experience}
-''' + self._format_experience() + r'''
-\end{rSection}
+                        %----------------------------------------------------------------------------------------
+                        %	EXPERIENCE SECTION
+                        %----------------------------------------------------------------------------------------
+                        \begin{rSection}{Experience}
+                        ''' + self._format_experience() + r'''
+                        \end{rSection}
 
-%----------------------------------------------------------------------------------------
-%	PROJECTS SECTION
-%----------------------------------------------------------------------------------------
-\begin{rSection}{Projects}
-''' + self._format_projects() + r'''
-\end{rSection}
+                        %----------------------------------------------------------------------------------------
+                        %	PROJECTS SECTION
+                        %----------------------------------------------------------------------------------------
+                        \begin{rSection}{Projects}
+                        ''' + self._format_projects() + r'''
+                        \end{rSection}
 
-%----------------------------------------------------------------------------------------
-%	SKILLS SECTION
-%----------------------------------------------------------------------------------------
-\begin{rSection}{Skills}
-''' + self._format_skills() + r'''
-\end{rSection}
+                        %----------------------------------------------------------------------------------------
+                        %	SKILLS SECTION
+                        %----------------------------------------------------------------------------------------
+                        \begin{rSection}{Skills}
+                        ''' + self._format_skills() + r'''
+                        \end{rSection}
 
-%----------------------------------------------------------------------------------------
-%	AWARDS AND SCHOLARSHIPS SECTION
-%----------------------------------------------------------------------------------------
-\begin{rSection}{Awards and Scholarships}
-''' + self._format_awards() + r'''
-\end{rSection}
+                        %----------------------------------------------------------------------------------------
+                        %	AWARDS AND SCHOLARSHIPS SECTION
+                        %----------------------------------------------------------------------------------------
+                        \begin{rSection}{Awards and Scholarships}
+                        ''' + self._format_awards() + r'''
+                        \end{rSection}
 
-\end{document}
-''')
+                        \end{document}
+                        ''')
 
     def _format_education(self):
         edu_str = ''
